@@ -10,7 +10,8 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
-// TODO: Create a function to generate markdown for README
+// TODO: Create a function to generate markdown for README.
+// Is this code meant to write the actual content of the README?
 function generateMarkdown(data) {
   return `# ${data.title}
 
@@ -18,3 +19,11 @@ function generateMarkdown(data) {
 }
 
 module.exports = generateMarkdown;
+
+
+// Use this code to see if const generateMarkdown = require('./utils/generateMarkdown'); is connected.
+// function generateMarkdown(data) {
+//   console.log(data.title)
+// }
+
+// module.exports = generateMarkdown;
