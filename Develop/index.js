@@ -1,8 +1,9 @@
 // Used "npm i inquirer" and have additional "dependencies" that are in the "package-lock.json" file.
+// generateMarkdown variable is meant to connect to generateMarkdown.js because there are functions in that file.
+// Import Node file system (fs) so that the writeFile method can be used:
 
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
-// Import Node file system (fs) so that the writeFile method can be used:
 const fs = require('fs');
 
 // Provided with "const questions = [];" as starter code to create an array of questions for user input.
@@ -11,78 +12,78 @@ const fs = require('fs');
 
 // Need to have some kind of function wrapped around 'inquirer.prompt' to invoke on page load.
 
-inquirer
-    .prompt([
-        {
-            name: 'title',
-            message: 'What is the title of your README?',
-            type: 'input',
-        },
-        {
-            name: 'description',
-            message: 'Please type at least one sentence to explain your application:',
-            type: 'input',
-        },
-        {
-            name: 'license',
-            message: 'What license do you want for your README?',
-            type: 'list',
-            choices: ['Apache License 2.0', 'GNU General Public License v3.0', 'GNU General Public License v2.0', 'MIT License', 'Mozilla Public License 2.0'],
-        }
-    ])
+const questions = [
+    {
+        name: 'title',
+        message: 'What is the title of your README?',
+        type: 'input'
+    },
+    {
+        name: 'description',
+        message: 'Please type at least one sentence to explain your application:',
+        type: 'input'
+    },
+    {
+        name: 'license',
+        message: 'What license do you want for your README?',
+        type: 'list',
+        choices: ['Apache License 2.0', 'GNU General Public License v3.0', 'GNU General Public License v2.0', 'MIT License', 'Mozilla Public License 2.0']
+    }
+];
 
-.then(function(data) {
-    // After user inputs data, it appears in the terminal. Testing to see that info is retained:
-    fs.writeFile('userData.txt', JSON.stringify(data), (err) =>
-        err ? console.error(err) : console.log('Success!')
-    );
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (error) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Success! Your README file has been generated!');
+    }); 
+}
+
+async function init() {
+    try {
+        const userResponses = await inquirer.prompt(questions);
+        console.log("Your responses: ", userResponses);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+init();
+
+
+// .then(function(data) {
+    // Using writeFile will overwrite the information in 'userData.txt' file. 'userData.txt' writes file as an object.
+    // Can come back to this piece later to figure out how to, perhaps, append more objects to 'userData.txt'?
+
+    
+    // Do we want 'userData.txt' written as an object? Is that a convenient style for generateMarkdown to work with?
+    
+    // This will append '[object][Object]' to the end of the previous object. It will not go on a new line.
+    // fs.appendFile('userData.txt', `${data}\n`, (err) =>
+    //     err ? console.error(err) : console.log('Success!')
+    // );
+
+    // fs.appendFile('userData.txt', JSON.stringify(data), (err) =>
+    //     err ? console.error(err) : console.log('Success!')
+    // );
+
+    
+    // Used console.logs to check that user input was being registered:
     // console.log(data.title);
     // console.log(data.description);
     // console.log(data.license);
-})
-
-// fs.writeFile('log.txt', process.argv[2], (err) =>
-//   err ? console.error(err) : console.log('Success!')
-// );
+// })
 
 // Starter code provided for doing something with the data.
 // Is this function meant to create the README.md file?
 // It seems like this function should take in user data and send it to the "generateMarkdown" function in "generateMarkdown.js":
 
 // This was part of the starter code:
-// function writeToFile(fileName, data) { 
-// }
-
-// fs.writeFile('log.txt', process.argv[2], (err) =>
-//   err ? console.error(err) : console.log('Success!')
-// );
 
 // TODO: Create a function to initialize app
-function init() { }
+// function init() { }
 
 // Function call to initialize app
-init();
+// init();
 
-
-
-
-// It might be useful to ignore this part as well since "function writeToFile(fileName, data) { }" was provided.
-
-// then((data) => {
-// // Use user feedback for... whatever!!
-// })
-  
-// It might be useful to ignore this part about errors for now. Can come back to it later in the assignment.
-
-//   .catch((error) => {
-//     if (error.isTtyError) {
-//       // Prompt couldn't be rendered in the current environment
-//     } else {
-//       // Something else went wrong
-//     }
-//   });
-
-// Tried using "fs.writeFile..." but then removed it due to presence of generateMarkdown.js
-// fs.writeFile('README.md', process.argv[2], (err) =>
-//   err ? console.error(err) : console.log('Success!')
-// );
