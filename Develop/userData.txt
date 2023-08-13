@@ -1,1 +1,0 @@
-{"title":"Tony's Tulips","description":"Shows pictures of beautiful Dutch tulips.","license":"GNU General Public License v3.0"}

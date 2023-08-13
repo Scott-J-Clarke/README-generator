@@ -1,29 +1,59 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+// Function returns a license badge based on what license is passed in (or an empty string):
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseBadge(license) {
+  if (license === 'Apache License 2.0') {
+    return '[![License: Apache License 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/license/apache-2-0)';
+  }
+  if (license === 'GNU General Public License v3.0') {
+    return '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)';
+  }
+  if (license === 'GNU General Public License v2.0') {
+    return '[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)';
+  }
+  if (license === 'MIT License') {
+    return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+  }
+  if (license === 'Mozilla Public License 2.0') {
+    return '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)';
+  }
+  else return '';
+}
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README.
-// Is this code meant to write the actual content of the README?
+// Function that generates content of README.
+// There is a table of contents, but it is preset. 
+// What if user doesn't want to include all parts of README ('usage', 'tests', etc.)? How will table of contents respond?
+// Be aware of spacing inside backticks!
 function generateMarkdown(data) {
-  return `# ${data.title}
+  let markdown = `# ${data.title}
+  
+## Table of Contents
 
-`;
+[Description](#description)
+
+[Installation](#installation)
+
+[License](#license)
+
+## Description
+  
+#### ${data.description}
+
+## Installation
+
+#### ${data.installation}
+
+## License
+
+#### ${renderLicenseBadge(data.license)}`
+  
+  return markdown;
 }
 
 module.exports = generateMarkdown;
 
+// TODO: Make a function that returns the license link. If there is no license, return an empty string.
+// This is startr code, but the license link looks better as part of the badge.
+// function renderLicenseLink(license) {}
 
-// Use this code to see if const generateMarkdown = require('./utils/generateMarkdown'); is connected.
-// function generateMarkdown(data) {
-//   console.log(data.title)
-// }
-
-// module.exports = generateMarkdown;
+// TODO: Make a function that returns the license section of README. If there is no license, return an empty string. This is starter code, but it's unclear what it is meant to do. 
+// function renderLicenseSection(license) {}
