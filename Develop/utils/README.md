@@ -1,4 +1,4 @@
-# Jon's Bon Bons
+# Bob's Burgers
   
 #### [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -20,11 +20,11 @@
 
 ## Description
   
-#### It tells you the best bon bons in town!
+#### It tells the best burger places around.
 
 ## Installation
 
-#### Install from GitHub!
+#### Download the 'burger' package.
 
 ## License
 
@@ -34,15 +34,15 @@
 
 ## Usage
 
-#### Takes in mapping data to show the location of chocolate stores.
+#### It tells the best burger restaurants near you.
 
 ## Contributing
 
-#### Follow BFJ style.
+#### They should follow best practices.
 
 ## Tests
 
-#### Please see below:
+#### See screenshots in README.
 
 ## Questions
 
@@ -52,4 +52,4 @@
 
 #### Email me at:
 
-#### scott_jc_clarke@hotmail.com
+#### scottclarke@funmail.com
