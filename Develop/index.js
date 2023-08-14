@@ -5,13 +5,6 @@ const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
 
-// Remaining questions are:
-// - Usage
-// - Contributing
-// - Tests
-// - Questions
-// Should there be if/else statements with console.logs for user to choose if they want to include these parts?
-
 const questions = [
     {
         name: 'title',
@@ -33,6 +26,31 @@ const questions = [
         message: 'What license do you want for your README?',
         type: 'list',
         choices: ['Apache License 2.0', 'GNU General Public License v3.0', 'GNU General Public License v2.0', 'MIT License', 'Mozilla Public License 2.0']
+    },
+    {
+        name: 'usage',
+        message: 'What does this application do?',
+        type: 'input'
+    },
+    {
+        name: 'contributing',
+        message: 'If you want people to contribute, what guidelines should they follow?',
+        type: 'input'
+    },
+    {
+        name: 'tests',
+        message: 'Tests for this application and how to run them:',
+        type: 'input'
+    }, 
+    {
+        name: 'username',
+        message: 'Enter your GitHub username so users with questions can find you:',
+        type: 'input'
+    },
+    {
+        name: 'email',
+        message: 'Enter the email users can contact you at with questions:',
+        type: 'input'
     }
 ];
 
